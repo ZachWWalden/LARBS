@@ -51,9 +51,9 @@ getuserandpass() {
 }
 
 getprogramgroups() {
-	proggroups=$(whiptail --separate-output --checklist "Choose Program Groups" 10 35 5 \
+	proggroups=($(whiptail --separate-output --checklist "Choose Program Groups" 10 47 5 \
 		"1" "ECE, Cad & 3D Printing" OFF \
-		"2" "Windows Games & Nintendo Emulation" OFF 3>&1 1>&2 2>&3)
+		"2" "Windows Games & Nintendo Emulation" OFF 3>&1 1>&2 2>&3))
 }
 
 usercheck() {
@@ -316,12 +316,12 @@ installationloop $progsfile
 if [ -z "$proggroups" ]; then
   echo "Only the base system will be installed"
 else
-  for CHOICE in $CHOICES; do
+  for CHOICE in ${proggroups[@]}; do
     case "$CHOICE" in
-    "1")
+    "\"1\"")
 		installationloop $engfile
       ;;
-    "2")
+    "\"2\"")
 		installationloop $gamingfile
       ;;
     *)
