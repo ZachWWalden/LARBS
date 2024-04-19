@@ -51,7 +51,7 @@ getuserandpass() {
 }
 
 getprogramgroups() {
-	proggroups=($(whiptail --separate-output --checklist "Choose Program Groups" 10 47 5 \
+	proggroups=($(whiptail --checklist "Choose Program Groups" 10 47 5 \
 		"1" "ECE, Cad & 3D Printing" OFF \
 		"2" "Windows Games & Nintendo Emulation" OFF 3>&1 1>&2 2>&3))
 }
@@ -161,6 +161,7 @@ installationloop() {
 		curl -Ls "$1" | sed '/^#/d' >/tmp/progs.csv
 	total=$(wc -l </tmp/progs.csv)
 	aurinstalled=$(pacman -Qqm)
+	n=0
 	while IFS=, read -r tag program comment; do
 		n=$((n + 1))
 		echo "$comment" | grep -q "^\".*\"$" &&
