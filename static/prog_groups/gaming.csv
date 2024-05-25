@@ -8,7 +8,7 @@ A,protonup-qt-bin, Qt gui to help with managing proton installations
 A,protontricks,is simple wrapper that does winetricks things for Proton enabled games
 ,winetricks, is a script to install various redistributable runtime libraries in Wine.
 ,lutris, is an open gaming platform
-A,heroic-games-launcher-bin, is an Open source Launcher for Epic, Amazon and GOG Games
+A,heroic-games-launcher-bin, is an Open source Launcher for Epic Amazon and GOG Games
 ,gamemode,is a daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS
 ,desmume, is a Nintendo DS Emulator
 ,mgba-qt,is a Nintendo Gameboy Advance Emulator focusing on both speed and accuracy. Qt5 UI.
