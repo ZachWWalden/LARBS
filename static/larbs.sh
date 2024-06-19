@@ -10,6 +10,7 @@ dotfilesrepo="https://github.com/ZachWWalden/archrice.git"
 progsfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/base.csv"
 engfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/eng.csv"
 gamingfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/gaming.csv"
+multimediafile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/multimedia.csv"
 aurhelper="yay"
 repobranch="master"
 export TERM=ansi
@@ -64,7 +65,8 @@ getuserandpass() {
 getprogramgroups() {
 	proggroups=($(whiptail --checklist "Choose Program Groups" 10 47 5 \
 		"1" "ECE, Cad & 3D Printing" OFF \
-		"2" "Windows Games & Nintendo Emulation" OFF 3>&1 1>&2 2>&3))
+		"2" "Windows Games & Nintendo Emulation" OFF \
+		"3" "Multimedia Programs" 3>&1 1>&2 2>&3))
 }
 
 usercheck() {
@@ -335,6 +337,9 @@ else
       ;;
     "\"2\"")
 		installationloop $gamingfile
+      ;;
+    "\"3\"")
+		installationloop $multimediafile
       ;;
     *)
       echo "Unsupported item $CHOICE!" >&2

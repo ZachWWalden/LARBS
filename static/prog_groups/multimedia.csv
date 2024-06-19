@@ -1,0 +1,12 @@
+#TAG,NAME IN REPO (or git url),PURPOSE (should be a verb phrase to sound right while installing)
+A,jellyfin-media-player,Jellyfin client
+,gimp,image manipulation tool
+,inkscape,vectorgraphics program
+,obs-studio,Recording/streaming
+A,ytarchive-bin,youtube livestream downloader
+,asunder,Cd Ripper
+,audacity,Audio editing
+,deadbeef,Music Player
+,minuet,Classical Ear Trainer
+,musescore,Digital score system
+,rawtherapee,"Raw photo editor, similar to Adobe Lightroom"
