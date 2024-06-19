@@ -66,6 +66,8 @@ G,https://github.com/ZachWWalden/dwm.git,is the window manager.
 ,slock,"allows you to lock your computer, and quickly unlock with your password."
 ,socat,is a utility which establishes two byte streams and transfers data between them.
 ,moreutils,is a collection of useful unix tools.
+,tesseract,"command-line OCR engine for advance maimpick"
+,tesseract-data-eng,"english language pack for OCR"
 A,jellyfin-media-player,Jellyfin client
 ,pcmanfm,GUI File Manager
 ,keepassxc,GUI Password Manager
