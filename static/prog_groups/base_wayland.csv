@@ -3,7 +3,7 @@
 ,libertinus-font,provides the sans and serif fonts for LARBS.
 ,ttf-font-awesome,provides extended glyph support.
 ,ttf-dejavu,properly displays emojis.
-,node,Node JS
+,nodejs,Node JS
 ,npm,Is the package manage for node. This is required to install many Neovim extensions
 A,lf-git,is an extensive terminal file manager that everyone likes.
 ,ueberzug,enables previews in the lf file manager.
@@ -82,3 +82,16 @@ A,rpi-imager-bin,"Raspberry pi os flasher, also works for any os image"
 ,rust,Rust language
 ,tmux,Is a terminal sessionizer and multiplexor. Necessary for development
 A,pokeget, Is a Rust program that displays pokemon sprites to the terminal blazingly fast.
+,hyprland,is a lightweight tiling Wayland Compositor with a chic aesthetic
+,kitty, is Hyprland's default terminal
+,hyprpaper, is Hyprland's wallpaper manager
+A,hyprpicker, Color Picker for Hyprland
+,hypridle, is Hyprland's idle management daemon
+,hyprlock, is Hyprland's GPU accelerated screen locking utility
+,hyprcursor, Hyprland cursor theme format
+,xdg-desktop-portal-hyprland, xdg-desktop-portal backend for Hyprland
+,waybar, Status bar for wayland compositors
+,rofi-wayland, is a dmenu replacemnent for wlroots compositors
+A,xwaylandvideobridge-git, allows Xwayland applications to share screens
+,cliphist, is a wayland clipboard manager that supports images and text
+
