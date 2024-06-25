@@ -8,6 +8,7 @@
 
 dotfilesrepo="https://github.com/ZachWWalden/archrice.git"
 progsfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/base.csv"
+waylandfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/base_wayland.csv"
 engfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/eng.csv"
 gamingfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/gaming.csv"
 multimediafile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/multimedia.csv"
@@ -67,6 +68,24 @@ getprogramgroups() {
 		"1" "ECE, Cad & 3D Printing" OFF \
 		"2" "Windows Games & Nintendo Emulation" OFF \
 		"3" "Multimedia Programs" 3>&1 1>&2 2>&3))
+}
+
+getwayland() {
+	DISP_CHOICE=$(
+		whiptail --title "Window Manager/Display Server" --menu "Choose One" 10 47 5 \
+			"1" "Xorg and DWM." \
+			"2" "Wayland and Hyprland." \ 3>&2 2>&1 1>&3
+	)
+
+	case $DISP_CHOICE in
+		"1")
+			wayland=false
+		;;
+		"2")
+			wayland=true
+			repobranch="wayland_hypr"
+		;;
+	esac
 }
 
 usercheck() {
@@ -277,6 +296,9 @@ getuserandpass || error "User exited."
 # Give warning if user already exists.
 usercheck || error "User exited."
 
+# Ask user whether they wish to install an Xorg or Wayland based system
+getwayland || error "User exited."
+
 # Let User select Program Groups
 getprogramgroups || error "User exited."
 
@@ -316,7 +338,7 @@ sed -Ei "s/^#(ParallelDownloads).*/\1 = 5/;/^#Color$/s/#//" /etc/pacman.conf
 # Use all cores for compilation.
 sed -i "s/-j2/-j$(nproc)/;/^#MAKEFLAGS/s/^#//" /etc/makepkg.conf
 
-manualinstall "$aurhelper-bin" || error "Failed to install AUR helper."
+manualinstall $aurhelper || error "Failed to install AUR helper."
 
 # Make sure .*-git AUR packages get updated automatically.
 $aurhelper -Y --save --devel
@@ -325,7 +347,12 @@ $aurhelper -Y --save --devel
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
-installationloop $progsfile
+if [ "$wayland" = true ]; then
+	baseprogs=$progsfile
+else
+	baseprogs=$waylandfile
+fi
+installationloop $baseprogs
 
 if [ -z "$proggroups" ]; then
   echo "Only the base system will be installed"
@@ -368,6 +395,7 @@ sudo -u "$name" mkdir -p "/home/$name/.cache/zsh/"
 sudo -u "$name" mkdir -p "/home/$name/.config/abook/"
 
 # Enable tap to click
+if [ "$wayland" = false ]; then
 [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
@@ -376,7 +404,7 @@ sudo -u "$name" mkdir -p "/home/$name/.config/abook/"
 	# Enable left mouse button by tapping
 	Option "Tapping" "on"
 EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
-
+fi
 # All this below to get Librewolf installed with add-ons and non-bad settings.
 
 whiptail --infobox "Setting browser privacy settings and add-ons..." 7 60
