@@ -347,7 +347,7 @@ $aurhelper -Y --save --devel
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
-if [ "$wayland" = true ]; then
+if [ "$wayland" = false ]; then
 	baseprogs=$progsfile
 else
 	baseprogs=$waylandfile
