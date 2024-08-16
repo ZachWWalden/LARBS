@@ -67,14 +67,14 @@ getprogramgroups() {
 	proggroups=($(whiptail --checklist "Choose Program Groups" 10 47 5 \
 		"1" "ECE, Cad & 3D Printing" OFF \
 		"2" "Windows Games & Nintendo Emulation" OFF \
-		"3" "Multimedia Programs" 3>&1 1>&2 2>&3))
+		"3" "Multimedia Programs" OFF 3>&1 1>&2 2>&3))
 }
 
 getwayland() {
 	DISP_CHOICE=$(
 		whiptail --title "Window Manager/Display Server" --menu "Choose One" 10 47 5 \
 			"1" "Xorg and DWM." \
-			"2" "Wayland and Hyprland." \ 3>&2 2>&1 1>&3
+			"2" "Wayland and Hyprland." \ 3>&1 1>&2 2>&3
 	)
 
 	case $DISP_CHOICE in
