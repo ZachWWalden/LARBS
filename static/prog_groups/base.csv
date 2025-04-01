@@ -101,3 +101,4 @@ A,rpi-imager-bin,"Raspberry pi os flasher, also works for any os image"
 ,rust,Rust language
 ,tmux,Is a terminal sessionizer and multiplexor. Necessary for development
 A,pokeget, Is a Rust program that displays pokemon sprites to the terminal blazingly fast.
+,tokei, is a foss sloc counter that support many languages.
