@@ -297,7 +297,7 @@ getuserandpass || error "User exited."
 usercheck || error "User exited."
 
 # Ask user whether they wish to install an Xorg or Wayland based system
-getwayland || error "User exited."
+# getwayland || error "User exited."
 
 # Let User select Program Groups
 getprogramgroups || error "User exited."
@@ -347,11 +347,11 @@ $aurhelper -Y --save --devel
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
-if [ "$wayland" = false ]; then
-	baseprogs=$progsfile
-else
-	baseprogs=$waylandfile
-fi
+#if [ "$wayland" = false ]; then
+baseprogs=$progsfile
+#else
+#	baseprogs=$waylandfile
+#fi
 installationloop $baseprogs
 
 if [ -z "$proggroups" ]; then
@@ -395,7 +395,7 @@ sudo -u "$name" mkdir -p "/home/$name/.cache/zsh/"
 sudo -u "$name" mkdir -p "/home/$name/.config/abook/"
 
 # Enable tap to click
-if [ "$wayland" = false ]; then
+#if [ "$wayland" = false ]; then
 [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
@@ -404,7 +404,7 @@ if [ "$wayland" = false ]; then
 	# Enable left mouse button by tapping
 	Option "Tapping" "on"
 EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
-fi
+#fi
 # All this below to get Librewolf installed with add-ons and non-bad settings.
 
 whiptail --infobox "Setting browser privacy settings and add-ons..." 7 60
