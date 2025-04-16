@@ -229,49 +229,6 @@ makeuserjs(){
 	[ ! -f "$arkenfox" ] && curl -sL "https://raw.githubusercontent.com/arkenfox/user.js/master/user.js" > "$arkenfox"
 	cat "$arkenfox" "$overrides" > "$userjs"
 	chown "$name:wheel" "$arkenfox" "$userjs"
-	# Install the updating script.
-	mkdir -p /usr/local/lib /etc/pacman.d/hooks
-	cp "/home/$name/.local/bin/arkenfox-auto-update" /usr/local/lib/
-	chown root:root /usr/local/lib/arkenfox-auto-update
-	chmod 755 /usr/local/lib/arkenfox-auto-update
-	# Trigger the update when needed via a pacman hook.
-	echo "[Trigger]
-Operation = Upgrade
-Type = Package
-Target = firefox
-Target = librewolf
-Target = librewolf-bin
-[Action]
-Description=Update Arkenfox user.js
-When=PostTransaction
-Depends=arkenfox-user.js
-Exec=/usr/local/lib/arkenfox-auto-update" > /etc/pacman.d/hooks/arkenfox.hook
-}
-
-installffaddons(){
-	addonlist="ublock-origin decentraleyes istilldontcareaboutcookies vim-vixen"
-	addontmp="$(mktemp -d)"
-	trap "rm -fr $addontmp" HUP INT QUIT TERM PWR EXIT
-	IFS=' '
-	sudo -u "$name" mkdir -p "$pdir/extensions/"
-	for addon in $addonlist; do
-		if [ "$addon" = "ublock-origin" ]; then
-			addonurl="$(curl -sL https://api.github.com/repos/gorhill/uBlock/releases/latest | grep -E 'browser_download_url.*\.firefox\.xpi' | cut -d '"' -f 4)"
-		else
-			addonurl="$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')"
-		fi
-		file="${addonurl##*/}"
-		sudo -u "$name" curl -LOs "$addonurl" > "$addontmp/$file"
-		id="$(unzip -p "$file" manifest.json | grep "\"id\"")"
-		id="${id%\"*}"
-		id="${id##*\"}"
-		mv "$file" "$pdir/extensions/$id.xpi"
-	done
-	chown -R "$name:$name" "$pdir/extensions"
-	# Fix a Vim Vixen bug with dark mode not fixed on upstream:
-	sudo -u "$name" mkdir -p "$pdir/chrome"
-	[ ! -f  "$pdir/chrome/userContent.css" ] && sudo -u "$name" echo ".vimvixen-console-frame { color-scheme: light !important; }
-#category-more-from-mozilla { display: none !important }" > "$pdir/chrome/userContent.css"
 }
 
 finalize() {
@@ -311,7 +268,7 @@ preinstallmsg || error "User exited."
 refreshkeys ||
 	error "Error automatically refreshing Arch keyring. Consider doing so manually."
 
-for x in curl ca-certificates base-devel git ntp zsh; do
+for x in curl ca-certificates base-devel git ntp zsh dash; do
 	whiptail --title "LARBS Installation" \
 		--infobox "Installing \`$x\` which is required to install and configure other programs." 8 70
 	installpkg "$x"
@@ -381,9 +338,10 @@ fi
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
 
 rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml" "/home/$name/deploy"
-[ -z "/home/$name/.config/newsboat/urls" ] &&
-	echo "$rssurls" > "/home/$name/.config/newsboat/urls"
 
+# Write urls for newsboat if it doesn't already exist
+[ -s "/home/$name/.config/newsboat/urls" ] ||
+	echo "$rssurls" | sudo -u "$name" tee "/home/$name/.config/newsboat/urls" >/dev/null
 
 # Most important command! Get rid of the beep!
 rmmod pcspkr
@@ -393,6 +351,9 @@ echo "blacklist pcspkr" >/etc/modprobe.d/nobeep.conf
 chsh -s /bin/zsh "$name" >/dev/null 2>&1
 sudo -u "$name" mkdir -p "/home/$name/.cache/zsh/"
 sudo -u "$name" mkdir -p "/home/$name/.config/abook/"
+
+# Make dash the default #!/bin/sh symlink.
+ln -sfT /bin/dash /bin/sh >/dev/null 2>&1
 
 # Enable tap to click
 #if [ "$wayland" = false ]; then
@@ -419,8 +380,6 @@ profile="$(sed -n "/Default=.*.default-default/ s/.*=//p" "$profilesini")"
 pdir="$browserdir/$profile"
 
 [ -d "$pdir" ] && makeuserjs
-
-[ -d "$pdir" ] && installffaddons
 
 # Kill the now unnecessary librewolf instance.
 pkill -u "$name" librewolf
