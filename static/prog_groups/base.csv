@@ -90,10 +90,11 @@ A,qdirstat-bin,Qt Directory visualizer
 ,blueman,Userspace Bluetooth control package
 A,cpupower-gui,Cpu clock control
 ,cups,C Unix Printing System
+,cups-pdf, allows CUPS to print to IPP Everywhere/Airprint printers.
+,nss-mdns, allows avahi to perform dns lookups on .local domains.
 ,gnome-font-viewer,Font viewer
 A,gtypist,GNU typing trainer
 ,gzip,Gzip
-,hplip,HP Printer drivers
 ,iperf3,Internet Performace tool
 A,localsend-bin,"Wifi File sharing, similar to apple air drop"
 ,neofetch,Show off to fellow internet virgins
