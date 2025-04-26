@@ -384,6 +384,11 @@ pdir="$browserdir/$profile"
 # Kill the now unnecessary librewolf instance.
 pkill -u "$name" librewolf
 
+# Configure mdns to be authoritative for the .local domain (For Airprint/IPP everywhere with CUPS.
+sudo sed -i "s/chines resol/chines mdns_minimal [NOTFOUND=return] resol/g" /etc/nsswitch.conf
+sudo systemctl enable avahi-daemon.service
+sudo systemctl enable cups.service
+
 # Allow wheel users to sudo with password and allow several system commands
 # (like `shutdown` to run without password).
 echo "%wheel ALL=(ALL:ALL) ALL" >/etc/sudoers.d/00-larbs-wheel-can-sudo
