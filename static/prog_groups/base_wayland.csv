@@ -73,6 +73,7 @@ A,cpupower-gui,Cpu clock control
 ,cups,C Unix Printing System
 ,cups-pdf, allows CUPS to print to IPP Everywhere/Airprint printers.
 ,nss-mdns, allows avahi to perform dns lookups on .local domains.
+,ipp-usb, allows the use of IPP everywhere over usb not just tcp/ip.
 A,gtypist,GNU typing trainer
 ,gzip,Gzip
 ,iperf3,Internet Performace tool
