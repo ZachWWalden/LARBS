@@ -10,7 +10,7 @@
 ,ttf-dejavu,properly displays emojis.
 ,node,Node JS
 ,npm,Is the package manager for node. This is required to install many Neovim extensions
-,tree-sitter-cli,,Required to install latex treesitter module
+,tree-sitter-cli,Required to install latex treesitter module
 A,lf-git,is an extensive terminal file manager that everyone likes.
 ,ueberzugpp,enables previews in the lf file manager.
 ,bc,is a mathematics language used for the dropdown calculator.
