@@ -68,7 +68,7 @@ A,qdirstat-bin,Qt Directory visualizer
 ,ttf-linux-libertine,Linux fonts
 ,adobe-source-han-sans-otc-fonts,Asian Character font
 ,adobe-source-han-serif-otc-fonts,Asian Character font
-,blueman,Userspace Bluetooth control package
+,bluetui,is a terminal-based bluetooth manager
 A,cpupower-gui,Cpu clock control
 ,cups,C Unix Printing System
 ,cups-pdf, allows CUPS to print to IPP Everywhere/Airprint printers.
