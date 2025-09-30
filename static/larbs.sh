@@ -71,19 +71,22 @@ getprogramgroups() {
 }
 
 getwayland() {
-	DISP_CHOICE=$(
-		whiptail --title "Window Manager/Display Server" --menu "Choose One" 10 47 5 \
-			"1" "Xorg and DWM." \
-			"2" "Wayland and Hyprland." \ 3>&1 1>&2 2>&3
-	)
+	serverchoice=($(whiptail --title "Window Manager/Display Server" --menu "Choose One" 10 47 3 \
+			"1" "Xorg and DWM" \
+			"2" "Wayland and Hyprland" \
+			"3" "Wayland and Dwl" 3>&1 1>&2 2>&3))
 
-	case $DISP_CHOICE in
+	case $serverchoice in
 		"1")
 			wayland=false
 		;;
 		"2")
 			wayland=true
 			repobranch="wayland_hypr"
+		;;
+		"3")
+			wayland=true
+			repobranch="wayland_dwl"
 		;;
 	esac
 }
@@ -254,7 +257,7 @@ getuserandpass || error "User exited."
 usercheck || error "User exited."
 
 # Ask user whether they wish to install an Xorg or Wayland based system
-# getwayland || error "User exited."
+getwayland || error "User exited."
 
 # Let User select Program Groups
 getprogramgroups || error "User exited."
@@ -304,11 +307,12 @@ $aurhelper -Y --save --devel
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
-#if [ "$wayland" = false ]; then
-baseprogs=$progsfile
-#else
-#	baseprogs=$waylandfile
-#fi
+if [ "$wayland" = false ]; then
+	baseprogs=$progsfile
+else
+	baseprogs=$waylandfile
+fi
+
 installationloop $baseprogs
 
 if [ -z "$proggroups" ]; then
@@ -356,7 +360,7 @@ sudo -u "$name" mkdir -p "/home/$name/.config/abook/"
 ln -sfT /bin/dash /bin/sh >/dev/null 2>&1
 
 # Enable tap to click
-#if [ "$wayland" = false ]; then
+if [ "$wayland" = false ]; then
 [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
         Identifier "libinput touchpad catchall"
         MatchIsTouchpad "on"
@@ -365,7 +369,7 @@ ln -sfT /bin/dash /bin/sh >/dev/null 2>&1
 	# Enable left mouse button by tapping
 	Option "Tapping" "on"
 EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
-#fi
+fi
 # All this below to get Librewolf installed with add-ons and non-bad settings.
 
 whiptail --infobox "Setting browser privacy settings and add-ons..." 7 60
