@@ -7,7 +7,7 @@
 ,wlroots0.18, DWL dependency.
 ,libxcb, DWL dependency for XWayland.
 ,xorg-xwayland, DWL dependency for XWayland.
-G,https://github.com/zachwwalden/dwl.git, DWL is a wayland compositor that aims to be similar to DWM.
+G,https://codeberg.org/zachwwalden/dwl.git, DWL is a wayland compositor that aims to be similar to DWM.
 ,kitty, is Hyprland's default terminal
 ,xdg-desktop-portal-wlr, xdg-desktop-portal backend for wlroots compositors based off it.
 ,rofi-wayland, is a dmenu replacemnent for wlroots compositors
