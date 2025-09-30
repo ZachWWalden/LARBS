@@ -1,0 +1,90 @@
+#TAG,NAME IN REPO (or git url),PURPOSE (should be a verb phrase to sound right while installing)
+,polkit,manages user policies.
+,otf-libertinus,provides the sans and serif fonts for LARBS.
+,ttf-font-awesome,provides extended glyph support.
+,ttf-dejavu,properly displays emojis.
+,node,Node JS
+,npm,Is the package manager for node. This is required to install many Neovim extensions
+,tree-sitter-cli,Required to install latex treesitter module
+A,lf-git,is an extensive terminal file manager that everyone likes.
+,ueberzugpp,enables previews in the lf file manager.
+,bc,is a mathematics language used for the dropdown calculator.
+,dosfstools,allows your computer to access dos-like filesystems.
+,libnotify,allows desktop notifications.
+,dunst,is a suckless notification system.
+,calcurse,terminal-based organizer for interactive and command line use
+,exfat-utils,allows management of FAT drives.
+,nsxiv,is a minimalist image viewer.
+,ffmpeg,can record and splice video and audio on the command line.
+,ffmpegthumbnailer,creates thumbnail previews of video files.
+,gnome-keyring,serves as the system keyring.
+A,gtk-theme-arc-gruvbox-git,gives the dark GTK theme used in LARBS.
+,python-qdarkstyle,provides a dark Qt theme.
+,neovim,a tidier vim with some useful features
+,mpv,is the patrician's choice video player.
+,man-db,lets you read man pages of programs.
+A,librewolf-bin,is the default browser of LARBS which also comes with ad-blocking and other sensible and necessary features by default.
+A,librewolf-extension-localcdn-bin,"local emulation of Content Delivery Networks."
+A,librewolf-extension-istilldontcareaboutcookies-bin,"removes annoying cookie banners"
+A,librewolf-extension-tridactyl-bin,"vim bindings in your browser."
+A,librewolf-extension-ublock-origin-bin,"the best ad blocker in town."
+A,arkenfox-user.js,provides hardened security settings for Firefox and Librewolf to avoid Mozilla spyware and general web fingerprinting.
+,noto-fonts,is an expansive font package.
+,noto-fonts-emoji,is an emoji font.
+,ntfs-3g,allows accessing NTFS partitions.
+,wireplumber,is the audio system.
+,pipewire-pulse,gives pipewire compatibility with PulseAudio programs.
+A,sc-im,is an Excel-like terminal spreadsheet manager.
+,maim,can take quick screenshots at your request.
+A,abook,is an offline addressbook usable by neomutt.
+,unzip,unzips zips.
+,lynx,"is a terminal browser also used in LARBS for generating in-terminal previews of websites, emails and HTML files."
+,yt-dlp,can download any YouTube video (or playlist or channel) when given the link.
+,zathura,is a pdf viewer with vim-like bindings.
+,zathura-pdf-mupdf,allows mupdf pdf compatibility in zathura.
+,poppler,manipulates .pdfs and gives .pdf previews and other .pdf functions.
+,mediainfo,shows audio and video information and is used in the file browser.
+,atool,manages and gives information about archives.
+,fzf,is a fuzzy finder tool used for easy selection and location of files.
+,bat,can highlight code output and display files and is used to generate previews in the file browser.
+A,zsh-fast-syntax-highlighting-git,provides syntax highlighting in the shell.
+A,task-spooler,queues commands or files for download.
+A,simple-mtpfs,enables the mounting of cell phones.
+A,htop-vim,is a graphical and colorful system monitor.
+,socat,is a utility which establishes two byte streams and transfers data between them.
+,moreutils,is a collection of useful unix tools.
+,tesseract,"command-line OCR engine for advance maimpick"
+,tesseract-data-eng,"english language pack for OCR"
+,pcmanfm,GUI File Manager
+,keepassxc,GUI Password Manager
+,pavucontrol,"Sound Manager, works with pulse backend"
+A,brave-bin,"Brave Browser, Just used t it at this point"
+,grub-customizer,Tool to customize bootloader appearance
+,pacman-contrib,Pacman dev utils
+,signal-desktop,Signal Client
+,transmission-gtk,Torrent Client
+,ttf-ancient-fonts,ancient fonts
+,ttf-linux-libertine,Linux fonts
+,adobe-source-han-sans-otc-fonts,Asian Character font
+,adobe-source-han-serif-otc-fonts,Asian Character font
+,bluetui,is a terminal-based bluetooth manager
+,cups,C Unix Printing System
+,cups-pdf, allows CUPS to print to IPP Everywhere/Airprint printers.
+,nss-mdns, allows avahi to perform dns lookups on .local domains.
+,ipp-usb, allows the use of IPP everywhere over usb not just tcp/ip
+,gnome-font-viewer,Font viewer
+A,gtypist,GNU typing trainer
+,gzip,Gzip
+,iperf3,Internet Performace tool
+A,localsend-bin,"Wifi File sharing, similar to apple air drop"
+,neofetch,Show off to fellow internet virgins
+,ripgrep,Fuzzy finder
+A,rpi-imager-bin,"Raspberry pi os flasher, also works for any os image"
+,libreoffice,FOSS Office suite
+,texlive,LaTeX typesetting software
+,ttf-nerd-fonts-symbols-mono,Cool icons for styling neovim or your terminal
+,rust,Rust language
+,tmux,Is a terminal sessionizer and multiplexor. Necessary for development
+A,pokeget, Is a Rust program that displays pokemon sprites to the terminal blazingly fast.
+,tokei, is a foss sloc counter that support many languages.
+,ncdu, is a tui application that maps storage usage by directory.
