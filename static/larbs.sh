@@ -74,7 +74,7 @@ getprogramgroups() {
 		"3" "Multimedia Programs" OFF 3>&1 1>&2 2>&3))
 }
 
-getwayland() {
+getwm() {
 	serverchoice=($(whiptail --title "Window Manager/Display Server" --menu "Choose One" 10 47 3 \
 			"1" "Xorg and DWM" \
 			"2" "Wayland and Hyprland" \
@@ -264,7 +264,7 @@ getuserandpass || error "User exited."
 usercheck || error "User exited."
 
 # Ask user whether they wish to install an Xorg or Wayland based system
-getwayland || error "User exited."
+getwm || error "User exited."
 
 # Let User select Program Groups
 getprogramgroups || error "User exited."
