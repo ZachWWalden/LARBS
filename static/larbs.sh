@@ -7,11 +7,14 @@
 ### OPTIONS AND VARIABLES ###
 
 dotfilesrepo="https://github.com/ZachWWalden/archrice.git"
-progsfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/base.csv"
-waylandfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/base_wayland.csv"
-engfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/eng.csv"
-gamingfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/gaming.csv"
-multimediafile="https://raw.githubusercontent.com/ZachWWalden/LARBS/master/static/prog_groups/multimedia.csv"
+progsfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/base.csv"
+#waylandfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/base_wayland.csv"
+dwmfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/wms/dwm.csv"
+hyprlandfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/wms/hyprland.csv"
+dwlfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/wms/dwl.csv"
+engfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/eng.csv"
+gamingfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/gaming.csv"
+multimediafile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/multimedia.csv"
 aurhelper="yay"
 repobranch="master"
 export TERM=ansi
