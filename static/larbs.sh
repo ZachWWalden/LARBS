@@ -7,11 +7,12 @@
 ### OPTIONS AND VARIABLES ###
 
 dotfilesrepo="https://github.com/ZachWWalden/archrice.git"
-progsfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/base.csv"
+basefile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/base.csv"
 #waylandfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/base_wayland.csv"
 dwmfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/wms/dwm.csv"
 hyprlandfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/wms/hyprland.csv"
 dwlfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/wms/dwl.csv"
+wmfile=$dwmfile
 engfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/eng.csv"
 gamingfile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/gaming.csv"
 multimediafile="https://raw.githubusercontent.com/ZachWWalden/LARBS/zach_dev/static/prog_groups/multimedia.csv"
@@ -82,13 +83,16 @@ getwayland() {
 	case $serverchoice in
 		"1")
 			wayland=false
+			wmfile=$dwmfile
 		;;
 		"2")
 			wayland=true
+			wmfile=$hyprlandfile
 			repobranch="wayland_hypr"
 		;;
 		"3")
 			wayland=true
+			wmfile=dwlfile
 			repobranch="wayland_dwl"
 		;;
 	esac
@@ -310,13 +314,9 @@ $aurhelper -Y --save --devel
 # installs each needed program the way required. Be sure to run this only after
 # the user has been created and has priviledges to run sudo without a password
 # and all build dependencies are installed.
-if [ "$wayland" = false ]; then
-	baseprogs=$progsfile
-else
-	baseprogs=$waylandfile
-fi
 
-installationloop $baseprogs
+installationloop $basefile
+installationloop $wmfile
 
 if [ -z "$proggroups" ]; then
   echo "Only the base system will be installed"
