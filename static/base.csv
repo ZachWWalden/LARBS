@@ -88,3 +88,4 @@ A,rpi-imager-bin,"Raspberry pi os flasher, also works for any os image"
 A,pokeget, Is a Rust program that displays pokemon sprites to the terminal blazingly fast.
 ,tokei, is a foss sloc counter that support many languages.
 ,ncdu, is a tui application that maps storage usage by directory.
+,brightnessctl, A simple cli utility to support controling backlight brightness.
