@@ -11,3 +11,4 @@ A,hyprpicker, Color Picker for Hyprland
 ,rofi-wayland, is a dmenu replacemnent for wlroots compositors
 A,xwaylandvideobridge-git, allows Xwayland applications to share screens
 ,cliphist, is a wayland clipboard manager that supports images and text
+,wlr-randr, provides a similar interface to xrandr for wl-roots based compositors
