@@ -5,6 +5,8 @@
 ,wayland-protocols, DWL dependency.
 ,pkgconf, DWL dependency.
 ,wlroots0.18, DWL dependency.
+,pixman, DWL dependency for my build.
+,fcft, DWL dependency for my build.
 ,libxcb, DWL dependency for XWayland.
 ,xorg-xwayland, DWL dependency for XWayland.
 G,https://codeberg.org/zachwwalden/dwl.git, DWL is a wayland compositor that aims to be similar to DWM.
