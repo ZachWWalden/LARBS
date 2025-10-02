@@ -15,3 +15,4 @@ A,heroic-games-launcher-bin, is an Open source Launcher for Epic Amazon and GOG 
 ,mupen64plus,is a Nintendo 64 Emulator
 A,cemu-bin,is a Nintendo Wii U emulator
 ,dolphin-emu, is a Gamecube and Wii emulator
+A,evdevhook2-git, is a daemon that provides a Cemuhook server for joycons ans sony controllers.
